@@ -8,13 +8,33 @@
 
 import UIKit
 
+public protocol SearchService {
+    
+    func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void)
+    
+}
+
 class SearchViewController: UIViewController {
 
+    var service: SearchService?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+}
 
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            return
+        }
+        service?.searchAlbums(query: text, completion: { (result) in
+            // TODO: implement me
+        })
+    }
+    
 }
 
