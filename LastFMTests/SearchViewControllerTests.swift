@@ -16,7 +16,7 @@ class SearchViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let identifier = "SearchViewController"
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let storyboard = UIStoryboard.main
         viewController = storyboard.instantiateViewController(withIdentifier: identifier) as? SearchViewController
     }
 
@@ -33,10 +33,17 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.first, "Test 123")
     }
     
+    func test_calls_searchService_on_search_no_text() {
+        let mockService = MockSearchService()
+        viewController.service = mockService
+        performSearch(text: nil)
+        XCTAssertEqual(mockService.recordedInvocations.searchAlbums.count, 0)
+    }
     
-    private func performSearch(text: String = "Test 123") {
+    
+    private func performSearch(text: String? = "Test 123") {
         let searchBar = UISearchBar()
-        searchBar.text = "Test 123"
+        searchBar.text = text
         viewController.searchBarSearchButtonClicked(searchBar)
     }
 

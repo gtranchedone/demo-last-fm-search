@@ -28,7 +28,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else {
+        guard let text = searchBar.text, !text.isEmpty else {
             return
         }
         service?.searchAlbums(query: text, completion: { (result) in

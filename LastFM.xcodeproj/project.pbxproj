@@ -20,6 +20,10 @@
 		995A54F02242C9EB00377512 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54EF2242C9EB00377512 /* Result.swift */; };
 		995A54F22242CB0B00377512 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54F12242CB0B00377512 /* Album.swift */; };
 		995A54F52242CBBC00377512 /* MockSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54F42242CBBC00377512 /* MockSearchService.swift */; };
+		995A54F72242CEDD00377512 /* LastFMSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54F62242CEDD00377512 /* LastFMSearchService.swift */; };
+		995A54F92242CEF500377512 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54F82242CEF500377512 /* AppDelegateTests.swift */; };
+		995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54FA2242CF0C00377512 /* LastFMSearchServiceTests.swift */; };
+		995A54FD2242D43900377512 /* UIStoryboard+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		995A54EF2242C9EB00377512 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		995A54F12242CB0B00377512 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		995A54F42242CBBC00377512 /* MockSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchService.swift; sourceTree = "<group>"; };
+		995A54F62242CEDD00377512 /* LastFMSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSearchService.swift; sourceTree = "<group>"; };
+		995A54F82242CEF500377512 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
+		995A54FA2242CF0C00377512 /* LastFMSearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSearchServiceTests.swift; sourceTree = "<group>"; };
+		995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 				995A54C02242A36B00377512 /* Info.plist */,
 				995A54F12242CB0B00377512 /* Album.swift */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
+				995A54F62242CEDD00377512 /* LastFMSearchService.swift */,
 				995A54E52242A8B200377512 /* LoadingView.swift */,
 				995A54EF2242C9EB00377512 /* Result.swift */,
 				995A54E92242C75500377512 /* SearchViewController.swift */,
@@ -126,8 +135,11 @@
 			isa = PBXGroup;
 			children = (
 				995A54CB2242A36B00377512 /* Info.plist */,
+				995A54F82242CEF500377512 /* AppDelegateTests.swift */,
+				995A54FA2242CF0C00377512 /* LastFMSearchServiceTests.swift */,
 				995A54E72242A8C200377512 /* LoadingViewTests.swift */,
 				995A54EB2242C7AD00377512 /* SearchViewControllerTests.swift */,
+				995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */,
 				995A54F32242CB9500377512 /* Mocks */,
 				995A54E22242A41C00377512 /* Stubs */,
 			);
@@ -293,6 +305,7 @@
 			files = (
 				995A54EA2242C75500377512 /* SearchViewController.swift in Sources */,
 				995A54B52242A36900377512 /* AppDelegate.swift in Sources */,
+				995A54F72242CEDD00377512 /* LastFMSearchService.swift in Sources */,
 				995A54F02242C9EB00377512 /* Result.swift in Sources */,
 				995A54E62242A8B200377512 /* LoadingView.swift in Sources */,
 				995A54F22242CB0B00377512 /* Album.swift in Sources */,
@@ -303,7 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995A54F92242CEF500377512 /* AppDelegateTests.swift in Sources */,
 				995A54F52242CBBC00377512 /* MockSearchService.swift in Sources */,
+				995A54FD2242D43900377512 /* UIStoryboard+Helpers.swift in Sources */,
+				995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */,
 				995A54EC2242C7AD00377512 /* SearchViewControllerTests.swift in Sources */,
 				995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */,
 			);

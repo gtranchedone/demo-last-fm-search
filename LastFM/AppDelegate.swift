@@ -13,10 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        configureSearchViewController()
         return true
+    }
+    
+    private func configureSearchViewController() {
+        let navigationController = window?.rootViewController as? UINavigationController
+        let viewController = navigationController?.topViewController as? SearchViewController
+        viewController?.service = LastFMSearchService()
     }
 
 }
