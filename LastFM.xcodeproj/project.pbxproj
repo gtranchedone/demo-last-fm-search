@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		995A54B52242A36900377512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54B42242A36900377512 /* AppDelegate.swift */; };
-		995A54B72242A36900377512 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54B62242A36900377512 /* ViewController.swift */; };
 		995A54BA2242A36900377512 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995A54B82242A36900377512 /* Main.storyboard */; };
 		995A54BC2242A36B00377512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995A54BB2242A36B00377512 /* Assets.xcassets */; };
 		995A54BF2242A36B00377512 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995A54BD2242A36B00377512 /* LaunchScreen.storyboard */; };
@@ -16,6 +15,7 @@
 		995A54E42242A61600377512 /* search_albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 995A54E32242A61600377512 /* search_albums.json */; };
 		995A54E62242A8B200377512 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54E52242A8B200377512 /* LoadingView.swift */; };
 		995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54E72242A8C200377512 /* LoadingViewTests.swift */; };
+		995A54EA2242C75500377512 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54E92242C75500377512 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		995A54B12242A36800377512 /* LastFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995A54B42242A36900377512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		995A54B62242A36900377512 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		995A54B92242A36900377512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		995A54BB2242A36B00377512 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		995A54BE2242A36B00377512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		995A54E32242A61600377512 /* search_albums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_albums.json; sourceTree = "<group>"; };
 		995A54E52242A8B200377512 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		995A54E72242A8C200377512 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
+		995A54E92242C75500377512 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +104,7 @@
 				995A54C02242A36B00377512 /* Info.plist */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
 				995A54E52242A8B200377512 /* LoadingView.swift */,
-				995A54B62242A36900377512 /* ViewController.swift */,
+				995A54E92242C75500377512 /* SearchViewController.swift */,
 				995A54BB2242A36B00377512 /* Assets.xcassets */,
 				995A54BD2242A36B00377512 /* LaunchScreen.storyboard */,
 				995A54B82242A36900377512 /* Main.storyboard */,
@@ -271,7 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995A54B72242A36900377512 /* ViewController.swift in Sources */,
+				995A54EA2242C75500377512 /* SearchViewController.swift in Sources */,
 				995A54B52242A36900377512 /* AppDelegate.swift in Sources */,
 				995A54E62242A8B200377512 /* LoadingView.swift in Sources */,
 			);
