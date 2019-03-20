@@ -12,9 +12,10 @@
 		995A54BA2242A36900377512 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995A54B82242A36900377512 /* Main.storyboard */; };
 		995A54BC2242A36B00377512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995A54BB2242A36B00377512 /* Assets.xcassets */; };
 		995A54BF2242A36B00377512 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995A54BD2242A36B00377512 /* LaunchScreen.storyboard */; };
-		995A54CA2242A36B00377512 /* LastFMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54C92242A36B00377512 /* LastFMTests.swift */; };
 		995A54D52242A36B00377512 /* LastFMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54D42242A36B00377512 /* LastFMUITests.swift */; };
 		995A54E42242A61600377512 /* search_albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 995A54E32242A61600377512 /* search_albums.json */; };
+		995A54E62242A8B200377512 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54E52242A8B200377512 /* LoadingView.swift */; };
+		995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54E72242A8C200377512 /* LoadingViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,12 +44,13 @@
 		995A54BE2242A36B00377512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		995A54C02242A36B00377512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		995A54C52242A36B00377512 /* LastFMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		995A54C92242A36B00377512 /* LastFMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMTests.swift; sourceTree = "<group>"; };
 		995A54CB2242A36B00377512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		995A54D02242A36B00377512 /* LastFMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		995A54D42242A36B00377512 /* LastFMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMUITests.swift; sourceTree = "<group>"; };
 		995A54D62242A36B00377512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		995A54E32242A61600377512 /* search_albums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_albums.json; sourceTree = "<group>"; };
+		995A54E52242A8B200377512 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		995A54E72242A8C200377512 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +101,13 @@
 		995A54B32242A36800377512 /* LastFM */ = {
 			isa = PBXGroup;
 			children = (
+				995A54C02242A36B00377512 /* Info.plist */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
+				995A54E52242A8B200377512 /* LoadingView.swift */,
 				995A54B62242A36900377512 /* ViewController.swift */,
-				995A54B82242A36900377512 /* Main.storyboard */,
 				995A54BB2242A36B00377512 /* Assets.xcassets */,
 				995A54BD2242A36B00377512 /* LaunchScreen.storyboard */,
-				995A54C02242A36B00377512 /* Info.plist */,
+				995A54B82242A36900377512 /* Main.storyboard */,
 			);
 			path = LastFM;
 			sourceTree = "<group>";
@@ -112,9 +115,9 @@
 		995A54C82242A36B00377512 /* LastFMTests */ = {
 			isa = PBXGroup;
 			children = (
-				995A54E22242A41C00377512 /* Stubs */,
-				995A54C92242A36B00377512 /* LastFMTests.swift */,
 				995A54CB2242A36B00377512 /* Info.plist */,
+				995A54E72242A8C200377512 /* LoadingViewTests.swift */,
+				995A54E22242A41C00377512 /* Stubs */,
 			);
 			path = LastFMTests;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			files = (
 				995A54B72242A36900377512 /* ViewController.swift in Sources */,
 				995A54B52242A36900377512 /* AppDelegate.swift in Sources */,
+				995A54E62242A8B200377512 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995A54CA2242A36B00377512 /* LastFMTests.swift in Sources */,
+				995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
