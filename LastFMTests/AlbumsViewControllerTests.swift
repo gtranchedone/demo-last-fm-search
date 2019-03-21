@@ -20,7 +20,7 @@ class AlbumsViewControllerTests: XCTestCase {
         let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "AlbumsViewController")
         viewController = vc as? AlbumsViewController
         let result: AlbumSearchResponse = try! loadJSONFromFile(named: "search_albums")
-        viewController.albums = result.results.albummatches.album
+        viewController.albums = result.albums
         viewController.imageService = mockImageService
         viewController.loadViewIfNeeded()
     }

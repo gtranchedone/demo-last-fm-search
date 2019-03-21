@@ -33,8 +33,7 @@ class LastFMSearchService: SearchService {
                 guard let self = self else { return }
                 do {
                     let result: AlbumSearchResponse = try self.parseResponse((data, response, error))
-                    let albums: [Album] = result.results.albummatches.album
-                    completion(.success(albums))
+                    completion(.success(result.albums))
                 }
                 catch {
                     completion(.failure(error))

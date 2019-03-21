@@ -8,19 +8,59 @@
 
 import Foundation
 
+/// This is the structure of the API response
 struct AlbumSearchResponse: Codable {
     
-    struct Result: Codable {
+    fileprivate enum ImageSize: String, Codable {
+        case small
+        case medium
+        case large
+        case extralarge
+    }
+    
+    fileprivate struct Result: Codable {
         
-        struct Matches: Codable {
+        fileprivate struct Matches: Codable {
             
-            let album: [Album]
+            fileprivate struct AlbumData: Codable {
+                
+                fileprivate struct ImageData: Codable {
+                    let text: String
+                    let size: ImageSize
+                    
+                    private enum CodingKeys : String, CodingKey {
+                        case size, text = "#text"
+                    }
+                }
+                
+                let name: String
+                let artist: String
+                let image: [ImageData]
+            }
+            
+            fileprivate let album: [AlbumData]
             
         }
         
-        let albummatches: Matches
+        fileprivate let albummatches: Matches
     }
     
-    let results: Result
+    private let results: Result
+    
+    /// Use this calculated property to make the API data into models the app understands
+    var albums: [Album] {
+        return results.albummatches.album.map({ data in
+            let coverURLString = data.image.filter({ $0.size == .extralarge }).first
+            let thumbnailURLString = data.image.filter({ $0.size == .large }).first
+            let coverURL = coverURLString == nil ? nil : URL(string: coverURLString!.text)
+            let thumbnailURL = thumbnailURLString == nil ? nil : URL(string: coverURLString!.text)
+            return Album(
+                name: data.name,
+                artist: data.artist,
+                coverURL: coverURL,
+                thumbnailURL: thumbnailURL
+            )
+        })
+    }
     
 }

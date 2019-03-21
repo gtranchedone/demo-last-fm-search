@@ -46,6 +46,14 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.contentViewController, albumsViewController)
     }
     
+    func test_passes_imageService_to_contentViewController_when_reset() {
+        let albumsViewController = AlbumsViewController()
+        viewController.contentViewController = albumsViewController
+        XCTAssertNil(albumsViewController.imageService as? MockImageService)
+        viewController.imageService = MockImageService()
+        XCTAssertNotNil(viewController.contentViewController?.imageService as? MockImageService)
+    }
+    
     func test_calls_searchService_on_search() {
         performSearchBarSearch()
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.count, 1)

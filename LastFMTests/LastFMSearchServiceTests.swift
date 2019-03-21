@@ -68,7 +68,7 @@ class LastFMSearchServiceTests: XCTestCase {
         let data = try loadDataFromFile(named: "search_albums")
         mockSession.stubbbedResult = MockURLSession.StubbedResult(data: data, response: nil, error: nil)
         let expectedResponse: AlbumSearchResponse = try loadJSONFromFile(named: "search_albums")
-        let expectedAlbums = expectedResponse.results.albummatches.album
+        let expectedAlbums = expectedResponse.albums
         let e = expectation(description: "Search for albums")
         service.searchAlbums(query: "Anything") { (result) in
             XCTAssertEqual(result, .success(expectedAlbums))
