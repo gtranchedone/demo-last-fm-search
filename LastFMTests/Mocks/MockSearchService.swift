@@ -28,7 +28,9 @@ class MockSearchService: SearchService {
     
     func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void) {
         recordedInvocations.searchAlbums.append(query)
-        completion(stubbedResult.searchAlbums)
+        DispatchQueue.global(qos: .background).async {
+            completion(self.stubbedResult.searchAlbums)
+        }
     }
     
 }

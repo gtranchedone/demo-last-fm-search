@@ -18,7 +18,7 @@ class MockTask: URLSessionTaskProtocol {
     }
     
     func resume() {
-        self.completionHandler()
+        DispatchQueue.global(qos: .background).async(execute: self.completionHandler)
     }
     
 }

@@ -45,13 +45,13 @@ class SearchViewControllerTests: XCTestCase {
     }
     
     func test_calls_searchService_on_search() {
-        performSearch()
+        performSearchBarSearch()
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.count, 1)
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.first, "Test 123")
     }
     
     func test_calls_searchService_on_search_no_text() {
-        performSearch(text: nil)
+        performSearchBarSearch(text: nil)
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.count, 0)
     }
     
@@ -61,8 +61,9 @@ class SearchViewControllerTests: XCTestCase {
     
     func test_sets_loadingView_to_loading_when_performing_search() {
         viewController.service = nil
-        performSearch()
-        XCTAssertEqual(viewController.loadingView.state, .loading(message: "Loading"))
+        performSearch(wait: false) {
+            XCTAssertEqual(self.viewController.loadingView.state, .loading(message: "Loading"))
+        }
     }
     
     func test_sets_loadingView_to_idle_after_performing_search_on_success() {
@@ -112,7 +113,19 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.contentViewController.albums, albums)
     }
     
-    private func performSearch(text: String? = "Test 123") {
+    private func performSearch(text: String = "Test 123", wait: Bool = true, beforeWait: (() -> Void)? = nil) {
+        let e = wait ? expectation(description: "Perform search") : nil
+        viewController.search(text) {
+            XCTAssertTrue(Thread.isMainThread)
+            e?.fulfill()
+        }
+        beforeWait?()
+        if wait {
+            waitForExpectations(timeout: 10)
+        }
+    }
+    
+    private func performSearchBarSearch(text: String? = "Test 123") {
         let searchBar = UISearchBar()
         searchBar.text = text
         viewController.searchBarSearchButtonClicked(searchBar)

@@ -27,11 +27,14 @@ class SearchViewController: UIViewController {
         contentViewController = children.first as? AlbumsViewController
     }
     
-    fileprivate func search(_ text: String) {
+    func search(_ text: String, completion: (() -> Void)? = nil) {
         loadingView.state = .loading(message: "Loading")
         service?.searchAlbums(query: text, completion: { [weak self] (result) in
             guard let self = self else { return }
-            self.handleSearchResult(result, searchTerm: text)
+            DispatchQueue.main.async {
+                self.handleSearchResult(result, searchTerm: text)
+                completion?()
+            }
         })
     }
     
