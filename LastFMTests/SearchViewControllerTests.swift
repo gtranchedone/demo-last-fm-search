@@ -18,7 +18,8 @@ class SearchViewControllerTests: XCTestCase {
         super.setUp()
         let identifier = "SearchViewController"
         let storyboard = UIStoryboard.main
-        viewController = storyboard.instantiateViewController(withIdentifier: identifier) as? SearchViewController
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        viewController = initialViewController as? SearchViewController
         mockService = MockSearchService()
         viewController.service = mockService
         viewController.loadViewIfNeeded()
@@ -29,6 +30,16 @@ class SearchViewControllerTests: XCTestCase {
         super.tearDown()
     }
 
+    func test_has_contentViewController() {
+        XCTAssertNotNil(viewController.contentViewController)
+    }
+    
+    func test_can_override_contentViewController() {
+        let albumsViewController = AlbumsViewController()
+        viewController.contentViewController = albumsViewController
+        XCTAssertEqual(viewController.contentViewController, albumsViewController)
+    }
+    
     func test_calls_searchService_on_search() {
         performSearch()
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.count, 1)
@@ -80,6 +91,21 @@ class SearchViewControllerTests: XCTestCase {
         }
         action?()
         XCTAssertEqual(mockService.recordedInvocations.searchAlbums.count, 2)
+    }
+    
+    func test_sets_albums_to_contentViewController_after_performing_search_on_success() {
+        let albums = [Album(name: "An album")]
+        mockService.stubbedResult.searchAlbums = .success(albums)
+        performSearch()
+        XCTAssertEqual(viewController.contentViewController.albums, albums)
+    }
+    
+    func test_sets_albums_to_contentViewController_after_performing_search_on_success_no_result() {
+        viewController.contentViewController.albums = [Album(name: "An album")]
+        let albums: [Album] = []
+        mockService.stubbedResult.searchAlbums = .success(albums)
+        performSearch()
+        XCTAssertEqual(viewController.contentViewController.albums, albums)
     }
     
     private func performSearch(text: String? = "Test 123") {

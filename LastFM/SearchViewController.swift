@@ -17,11 +17,13 @@ public protocol SearchService {
 class SearchViewController: UIViewController {
 
     var service: SearchService?
+    
     @IBOutlet weak var loadingView: LoadingView!
+    weak var contentViewController: AlbumsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        contentViewController = children.first as? AlbumsViewController
     }
     
     fileprivate func search(_ text: String) {
@@ -53,7 +55,7 @@ class SearchViewController: UIViewController {
         else {
             loadingView.state = .idle
         }
-        // TODO: pass result to contentController
+        contentViewController.albums = albums
     }
     
     private func handleSearchFailure(searchTerm: String, error: Error) {
