@@ -10,6 +10,7 @@ import Foundation
 
 public struct Album {
     let name: String
+    let artist: String
 }
 
 extension Album: Codable {}

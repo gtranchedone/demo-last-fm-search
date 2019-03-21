@@ -28,7 +28,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTV-OS-cc1">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <connections>
-                                    <segue destination="qwd-62-o0D" kind="embed" id="NzZ-zO-czO"/>
+                                    <segue destination="j7T-MR-YlW" kind="embed" id="Lug-RG-kmS"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmr-0n-mXe" customClass="LoadingView" customModule="LastFM" customModuleProvider="target">
@@ -62,6 +62,21 @@
             </objects>
             <point key="canvasLocation" x="1023" y="793"/>
         </scene>
+        <!--Albums View Controller-->
+        <scene sceneID="aNd-ZC-dbQ">
+            <objects>
+                <viewController storyboardIdentifier="AlbumsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j7T-MR-YlW" customClass="AlbumsViewController" customModule="LastFM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ce0-a9-SNy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UZv-qd-028"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t9c-WU-wY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1841" y="793"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CsT-yV-VPv">
             <objects>
@@ -79,31 +94,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6c-tC-Mfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="792.95352323838085"/>
-        </scene>
-        <!--Albums View Controller-->
-        <scene sceneID="0K0-2q-8ur">
-            <objects>
-                <collectionViewController storyboardIdentifier="AlbumsViewController" id="qwd-62-o0D" customClass="AlbumsViewController" customModule="LastFM" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l6O-v5-FDz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xRH-hI-zzM">
-                            <size key="itemSize" width="145" height="145"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="qwd-62-o0D" id="vAK-x1-XJo"/>
-                            <outlet property="delegate" destination="qwd-62-o0D" id="j9Y-aN-H8H"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m5Z-Oy-GQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1913" y="793"/>
         </scene>
     </scenes>
 </document>
