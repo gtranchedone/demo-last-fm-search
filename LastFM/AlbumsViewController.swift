@@ -25,6 +25,10 @@ class AlbumsViewController: UIViewController {
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        let itemWidth = (view.bounds.width - 30) / 2
+        let itemHeight = itemWidth
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         view.addSubview(collectionView)
         let constraints = [
@@ -35,6 +39,7 @@ class AlbumsViewController: UIViewController {
         ]
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(constraints)
         return collectionView
