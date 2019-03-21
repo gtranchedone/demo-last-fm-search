@@ -35,6 +35,7 @@
 		995A55132243A89500377512 /* Environment.json in Resources */ = {isa = PBXBuildFile; fileRef = 995A55122243A89500377512 /* Environment.json */; };
 		995A55162243AB4E00377512 /* Environment.example.json in Resources */ = {isa = PBXBuildFile; fileRef = 995A55152243AB2700377512 /* Environment.example.json */; };
 		995A55182243B0A300377512 /* broken_environment.json in Resources */ = {isa = PBXBuildFile; fileRef = 995A55172243B0A300377512 /* broken_environment.json */; };
+		995A551A2243B19F00377512 /* URLSessionProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55192243B19F00377512 /* URLSessionProtocolTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		995A55142243AA1C00377512 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		995A55152243AB2700377512 /* Environment.example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Environment.example.json; sourceTree = SOURCE_ROOT; };
 		995A55172243B0A300377512 /* broken_environment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = broken_environment.json; sourceTree = "<group>"; };
+		995A55192243B19F00377512 /* URLSessionProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			children = (
 				995A550F2243A7CC00377512 /* EnvironmentTests.swift */,
 				995A54FE2242D65200377512 /* ResultTests.swift */,
+				995A55192243B19F00377512 /* URLSessionProtocolTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */,
 				995A54EC2242C7AD00377512 /* SearchViewControllerTests.swift in Sources */,
 				995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */,
+				995A551A2243B19F00377512 /* URLSessionProtocolTests.swift in Sources */,
 				995A55052242DC4B00377512 /* Bundle+Helpers.swift in Sources */,
 				995A54FF2242D65200377512 /* ResultTests.swift in Sources */,
 				995A55102243A7CC00377512 /* EnvironmentTests.swift in Sources */,
