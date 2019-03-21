@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DefaultImageService: ImageFetcher {
+class DefaultImageService: ImageService {
     
     private enum Error: Swift.Error {
         case invalidImageData

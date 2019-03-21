@@ -14,7 +14,7 @@ class AlbumsViewModel {
         case standardAlbum
     }
     
-    var imageService: ImageFetcher?
+    var imageService: ImageService?
     
     func configure(collectionView: UICollectionView) {
         let identifier = CellIdentifier.standardAlbum.rawValue

@@ -17,7 +17,7 @@ public protocol SearchService {
 class SearchViewController: UIViewController {
 
     var searchService: SearchService?
-    var imageService: ImageFetcher?
+    var imageService: ImageService?
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loadingView: LoadingView!

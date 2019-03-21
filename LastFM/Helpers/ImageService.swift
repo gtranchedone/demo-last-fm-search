@@ -1,5 +1,5 @@
 //
-//  ImageFetcher.swift
+//  ImageService.swift
 //  LastFM
 //
 //  Created by Gianluca Tranchedone on 21/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ImageFetcher {
+protocol ImageService {
     
     func fetchImage(from url: URL, completionHandler: @escaping (Result<UIImage>) -> Void) -> UIImage?
     

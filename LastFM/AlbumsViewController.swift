@@ -18,7 +18,7 @@ class AlbumsViewController: UIViewController {
         }
     }
     
-    var imageService: ImageFetcher?
+    var imageService: ImageService?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

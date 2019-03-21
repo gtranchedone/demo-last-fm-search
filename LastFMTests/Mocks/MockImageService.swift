@@ -9,7 +9,7 @@
 import UIKit
 @testable import LastFM
 
-class MockImageService: ImageFetcher {
+class MockImageService: ImageService {
     
     private enum Error: Swift.Error {
         case notFound
