@@ -13,7 +13,6 @@
         <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SearchViewController" customModule="LastFM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -29,11 +28,19 @@
                                     <segue destination="qwd-62-o0D" kind="embed" id="NzZ-zO-czO"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmr-0n-mXe" customClass="LoadingView" customModule="LastFM" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fmr-0n-mXe" firstAttribute="top" secondItem="Oyn-Vg-TCS" secondAttribute="bottom" id="78j-s2-re3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pTV-OS-cc1" secondAttribute="bottom" id="GHL-k4-qCS"/>
+                            <constraint firstItem="fmr-0n-mXe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J0W-bk-sBT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fmr-0n-mXe" secondAttribute="bottom" id="LDx-dF-mjX"/>
                             <constraint firstItem="pTV-OS-cc1" firstAttribute="top" secondItem="Oyn-Vg-TCS" secondAttribute="bottom" id="N0w-kf-iAb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fmr-0n-mXe" secondAttribute="trailing" id="WzP-JI-FkO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pTV-OS-cc1" secondAttribute="trailing" id="hdT-0y-2Hk"/>
                             <constraint firstItem="Oyn-Vg-TCS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="j5t-tF-P5Q"/>
                             <constraint firstItem="Oyn-Vg-TCS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="krg-sD-Jcv"/>
@@ -43,7 +50,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="f24-Aa-19D"/>
+                    <connections>
+                        <outlet property="loadingView" destination="fmr-0n-mXe" id="XfP-qL-dmG"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1023" y="793"/>
         </scene>

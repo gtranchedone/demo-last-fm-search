@@ -10,10 +10,27 @@ import UIKit
 
 public class LoadingView: UIView {
     
-    public enum State {
+    public enum State: Equatable {
         case idle
         case loading(message: String?)
         case error(message: String?, actionTitle: String?, actionHandler: (() -> Void)?)
+        
+        public static func == (lhs: LoadingView.State, rhs: LoadingView.State) -> Bool {
+            switch (lhs, rhs) {
+            case (.idle, .idle):
+                return true
+                
+            case (.loading(let lhsMessage), .loading(let rhsMessage)):
+                return lhsMessage == rhsMessage
+                
+            case (.error(let lhsMessage, let lhsAction, _),
+                  .error(let rhsMessage, let rhsAction, _)):
+                return lhsMessage == rhsMessage && lhsAction == rhsAction
+                
+            default:
+                return false
+            }
+        }
     }
     
     public var state: State = .idle {

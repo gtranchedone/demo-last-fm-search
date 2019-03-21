@@ -17,10 +17,53 @@ public protocol SearchService {
 class SearchViewController: UIViewController {
 
     var service: SearchService?
+    @IBOutlet weak var loadingView: LoadingView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    fileprivate func search(_ text: String) {
+        loadingView.state = .loading(message: "Loading")
+        service?.searchAlbums(query: text, completion: { [weak self] (result) in
+            guard let self = self else { return }
+            self.handleSearchResult(result, searchTerm: text)
+        })
+    }
+    
+    private func handleSearchResult(_ result: Result<[Album]>, searchTerm: String) {
+        switch result {
+            case .success(let albums):
+                handleSearchSuccess(albums: albums)
+            
+            case .failure(let error):
+                handleSearchFailure(searchTerm: searchTerm, error: error)
+        }
+    }
+    
+    private func handleSearchSuccess(albums: [Album]) {
+        if albums.isEmpty {
+            loadingView.state = .error(
+                message: "No results",
+                actionTitle: nil,
+                actionHandler: nil
+            )
+        }
+        else {
+            loadingView.state = .idle
+        }
+        // TODO: pass result to contentController
+    }
+    
+    private func handleSearchFailure(searchTerm: String, error: Error) {
+        loadingView.state = .error(
+            message: "An error has occurred",
+            actionTitle: "Retry",
+            actionHandler: { [weak self] in
+                self?.search(searchTerm)
+            }
+        )
     }
 
 }
@@ -31,9 +74,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let text = searchBar.text, !text.isEmpty else {
             return
         }
-        service?.searchAlbums(query: text, completion: { (result) in
-            // TODO: implement me
-        })
+        search(text)
     }
     
 }
