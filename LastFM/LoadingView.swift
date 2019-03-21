@@ -39,6 +39,12 @@ public class LoadingView: UIView {
         }
     }
     
+    public var hidesWhenIdle: Bool = true {
+        didSet {
+            updateViewState()
+        }
+    }
+    
     private var messageLabel = UILabel()
     private var actionButton = UIButton(type: .system)
     private var activityIndicator = { () -> UIActivityIndicatorView in
@@ -103,6 +109,7 @@ public class LoadingView: UIView {
     }
     
     private func updateViewState() {
+        isHidden = hidesWhenIdle && state == .idle
         switch state {
             case .idle:
                 messageLabel.isHidden = true

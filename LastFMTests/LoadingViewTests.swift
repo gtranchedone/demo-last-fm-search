@@ -23,6 +23,58 @@ class LoadingViewTests: XCTestCase {
         super.tearDown()
     }
     
+    func test_is_hidden_by_default_when_idle() {
+        XCTAssertTrue(loadingView.hidesWhenIdle)
+        XCTAssertTrue(loadingView.isHidden)
+    }
+    
+    func test_is_hidden_by_default_when_becomes_idle() {
+        loadingView.state = .loading(message: nil)
+        loadingView.state = .idle
+        XCTAssertTrue(loadingView.hidesWhenIdle)
+        XCTAssertTrue(loadingView.isHidden)
+    }
+    
+    func test_is_not_hidden_by_default_when_loading() {
+        loadingView.state = .loading(message: nil)
+        XCTAssertTrue(loadingView.hidesWhenIdle)
+        XCTAssertFalse(loadingView.isHidden)
+    }
+    
+    func test_is_not_hidden_by_default_when_showing_error() {
+        loadingView.state = .error(message: "Test", actionTitle: nil, actionHandler: nil)
+        XCTAssertTrue(loadingView.hidesWhenIdle)
+        XCTAssertFalse(loadingView.isHidden)
+    }
+    
+    func test_is_not_hidden_when_hidesWhenIdle_isFalse() {
+        loadingView.hidesWhenIdle = false
+        XCTAssertFalse(loadingView.hidesWhenIdle)
+        XCTAssertFalse(loadingView.isHidden)
+    }
+    
+    func test_is_not_hidden_when_hidesWhenIdle_isFalse_and_becomes_idle() {
+        loadingView.hidesWhenIdle = false
+        loadingView.state = .loading(message: nil)
+        loadingView.state = .idle
+        XCTAssertFalse(loadingView.hidesWhenIdle)
+        XCTAssertFalse(loadingView.isHidden)
+    }
+    
+    func test_is_not_hidden_when_hidesWhenIdle_isFalse_and_loading() {
+        loadingView.hidesWhenIdle = false
+        loadingView.state = .loading(message: nil)
+        XCTAssertFalse(loadingView.hidesWhenIdle)
+        XCTAssertFalse(loadingView.isHidden)
+    }
+    
+    func test_is_not_hidden_when_hidesWhenIdle_isFalse_and_showing_error() {
+        loadingView.hidesWhenIdle = false
+        loadingView.state = .error(message: "Test", actionTitle: nil, actionHandler: nil)
+        XCTAssertFalse(loadingView.hidesWhenIdle)
+        XCTAssertFalse(loadingView.isHidden)
+    }
+    
     func test_is_idle_by_default_with_correct_view_state() {
         let messageLabel = findMessageLabel()
         let actionButton = findActionButton()
