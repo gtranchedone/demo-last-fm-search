@@ -11,6 +11,20 @@ public enum Result<T> {
     case failure(Error)
 }
 
+extension Result {
+    
+    public func map<U>(_ closure: (T) -> U) -> Result<U> {
+        switch self {
+        case .success(let value):
+            return .success(closure(value))
+            
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
+}
+
 extension Result: Equatable where T: Equatable {
 
     public static func == (lhs: Result<T>, rhs: Result<T>) -> Bool {

@@ -45,5 +45,19 @@ class ResultTests: XCTestCase {
         let rhs = Result<Int>.failure(Error.foo)
         XCTAssertNotEqual(lhs, rhs)
     }
+    
+    func test_map_value() {
+        let r = Result<Int>.success(1)
+        let lhs = r.map({ String(describing: $0) })
+        let rhs = Result<String>.success("1")
+        XCTAssertEqual(lhs, rhs)
+    }
+    
+    func test_map_error() {
+        let r = Result<Int>.failure(Error.foo)
+        let lhs = r.map({ String(describing: $0) })
+        let rhs = Result<String>.failure(Error.foo)
+        XCTAssertEqual(lhs, rhs)
+    }
 
 }
