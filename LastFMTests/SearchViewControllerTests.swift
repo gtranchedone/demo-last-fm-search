@@ -113,6 +113,36 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.contentViewController.albums, albums)
     }
     
+    func test_dismissed_keyboard_after_keyboard_search() {
+        class MockSearchBar: UISearchBar {
+            private(set) var didDismiss = false
+            override func resignFirstResponder() -> Bool {
+                didDismiss = true
+                return super.resignFirstResponder()
+            }
+        }
+        
+        let mockSearchBar = MockSearchBar()
+        viewController.searchBar = mockSearchBar
+        performSearchBarSearch()
+        XCTAssertTrue(mockSearchBar.didDismiss)
+    }
+    
+    func test_dismissed_keyboard_after_keyboard_search_empty_text() {
+        class MockSearchBar: UISearchBar {
+            private(set) var didDismiss = false
+            override func resignFirstResponder() -> Bool {
+                didDismiss = true
+                return super.resignFirstResponder()
+            }
+        }
+        
+        let mockSearchBar = MockSearchBar()
+        viewController.searchBar = mockSearchBar
+        performSearchBarSearch(text: nil)
+        XCTAssertTrue(mockSearchBar.didDismiss)
+    }
+    
     private func performSearch(text: String = "Test 123", wait: Bool = true, beforeWait: (() -> Void)? = nil) {
         let e = wait ? expectation(description: "Perform search") : nil
         viewController.search(text) {
@@ -126,7 +156,7 @@ class SearchViewControllerTests: XCTestCase {
     }
     
     private func performSearchBarSearch(text: String? = "Test 123") {
-        let searchBar = UISearchBar()
+        let searchBar = viewController.searchBar ?? UISearchBar()
         searchBar.text = text
         viewController.searchBarSearchButtonClicked(searchBar)
     }
