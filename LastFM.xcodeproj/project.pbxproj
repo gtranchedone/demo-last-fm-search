@@ -44,6 +44,8 @@
 		995A55262243ED9800377512 /* believe.png in Resources */ = {isa = PBXBuildFile; fileRef = 995A55252243ED9800377512 /* believe.png */; };
 		995A55282243EFCA00377512 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55272243EFCA00377512 /* ImageFetcher.swift */; };
 		995A552A2243F3C600377512 /* MockImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55292243F3C600377512 /* MockImageService.swift */; };
+		995A552C2243FCC900377512 /* DefaultImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A552B2243FCC900377512 /* DefaultImageService.swift */; };
+		995A552E2243FFDE00377512 /* DefaultImageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A552D2243FFDE00377512 /* DefaultImageServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		995A55252243ED9800377512 /* believe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = believe.png; sourceTree = "<group>"; };
 		995A55272243EFCA00377512 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		995A55292243F3C600377512 /* MockImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageService.swift; sourceTree = "<group>"; };
+		995A552B2243FCC900377512 /* DefaultImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageService.swift; sourceTree = "<group>"; };
+		995A552D2243FFDE00377512 /* DefaultImageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 				995A551D2243B3D900377512 /* AlbumsViewController.swift */,
 				995A551F2243E8D000377512 /* AlbumsViewModel.swift */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
+				995A552B2243FCC900377512 /* DefaultImageService.swift */,
 				995A54F62242CEDD00377512 /* LastFMSearchService.swift */,
 				995A54E52242A8B200377512 /* LoadingView.swift */,
 				995A54E92242C75500377512 /* SearchViewController.swift */,
@@ -185,6 +190,7 @@
 				995A54CB2242A36B00377512 /* Info.plist */,
 				995A551B2243B3AA00377512 /* AlbumsViewControllerTests.swift */,
 				995A54F82242CEF500377512 /* AppDelegateTests.swift */,
+				995A552D2243FFDE00377512 /* DefaultImageServiceTests.swift */,
 				995A54FA2242CF0C00377512 /* LastFMSearchServiceTests.swift */,
 				995A54E72242A8C200377512 /* LoadingViewTests.swift */,
 				995A54EB2242C7AD00377512 /* SearchViewControllerTests.swift */,
@@ -414,6 +420,7 @@
 				995A54E62242A8B200377512 /* LoadingView.swift in Sources */,
 				995A54F22242CB0B00377512 /* Album.swift in Sources */,
 				995A55222243E96300377512 /* AlbumCell.swift in Sources */,
+				995A552C2243FCC900377512 /* DefaultImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +433,7 @@
 				995A54F92242CEF500377512 /* AppDelegateTests.swift in Sources */,
 				995A54F52242CBBC00377512 /* MockSearchService.swift in Sources */,
 				995A54FD2242D43900377512 /* UIStoryboard+Helpers.swift in Sources */,
+				995A552E2243FFDE00377512 /* DefaultImageServiceTests.swift in Sources */,
 				995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */,
 				995A54EC2242C7AD00377512 /* SearchViewControllerTests.swift in Sources */,
 				995A551C2243B3AA00377512 /* AlbumsViewControllerTests.swift in Sources */,

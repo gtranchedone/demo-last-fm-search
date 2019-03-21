@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let navigationController = window?.rootViewController as? UINavigationController
         let viewController = navigationController?.topViewController as? SearchViewController
-        viewController?.service = LastFMSearchService(apiKey: apiKey)
+        viewController?.searchService = LastFMSearchService(apiKey: apiKey)
+        viewController?.imageService = DefaultImageService()
     }
 
 }

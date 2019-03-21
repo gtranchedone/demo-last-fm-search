@@ -30,7 +30,8 @@ class AppDelegateTests: XCTestCase {
         let didConfigure = appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
         XCTAssertTrue(didConfigure)
         let viewController = findSearchViewController()
-        XCTAssertNotNil(viewController?.service as? LastFMSearchService)
+        XCTAssertNotNil(viewController?.searchService as? LastFMSearchService)
+        XCTAssertNotNil(viewController?.imageService as? DefaultImageService)
     }
     
     func test_fails_configuration_if_environment_does_not_contain_apiKey() throws {
@@ -38,7 +39,8 @@ class AppDelegateTests: XCTestCase {
         let didConfigure = appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
         XCTAssertTrue(didConfigure)
         let viewController = findSearchViewController()
-        XCTAssertNil(viewController?.service)
+        XCTAssertNil(viewController?.searchService)
+        XCTAssertNil(viewController?.imageService)
     }
     
     private func findSearchViewController() -> SearchViewController? {

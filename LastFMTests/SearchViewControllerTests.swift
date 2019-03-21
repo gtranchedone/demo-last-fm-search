@@ -21,7 +21,8 @@ class SearchViewControllerTests: XCTestCase {
         let initialViewController = storyboard.instantiateViewController(withIdentifier: identifier)
         viewController = initialViewController as? SearchViewController
         mockService = MockSearchService()
-        viewController.service = mockService
+        viewController.searchService = mockService
+        viewController.imageService = MockImageService()
         viewController.loadViewIfNeeded()
     }
 
@@ -36,6 +37,7 @@ class SearchViewControllerTests: XCTestCase {
 
     func test_has_contentViewController() {
         XCTAssertNotNil(viewController.contentViewController)
+        XCTAssertNotNil(viewController.contentViewController?.imageService as? MockImageService)
     }
     
     func test_can_override_contentViewController() {
@@ -60,7 +62,7 @@ class SearchViewControllerTests: XCTestCase {
     }
     
     func test_sets_loadingView_to_loading_when_performing_search() {
-        viewController.service = nil
+        viewController.searchService = nil
         performSearch(wait: false) {
             XCTAssertEqual(self.viewController.loadingView.state, .loading(message: "Loading"))
         }

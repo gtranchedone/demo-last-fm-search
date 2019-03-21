@@ -16,7 +16,8 @@ public protocol SearchService {
 
 class SearchViewController: UIViewController {
 
-    var service: SearchService?
+    var searchService: SearchService?
+    var imageService: ImageFetcher?
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loadingView: LoadingView!
@@ -25,11 +26,12 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         contentViewController = children.first as? AlbumsViewController
+        contentViewController?.imageService = imageService
     }
     
     func search(_ text: String, completion: (() -> Void)? = nil) {
         loadingView.state = .loading(message: "Loading")
-        service?.searchAlbums(query: text, completion: { [weak self] (result) in
+        searchService?.searchAlbums(query: text, completion: { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.handleSearchResult(result, searchTerm: text)
