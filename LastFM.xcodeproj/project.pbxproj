@@ -42,6 +42,8 @@
 		995A55222243E96300377512 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55212243E96300377512 /* AlbumCell.swift */; };
 		995A55242243EBE500377512 /* Album+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55232243EBE500377512 /* Album+Builder.swift */; };
 		995A55262243ED9800377512 /* believe.png in Resources */ = {isa = PBXBuildFile; fileRef = 995A55252243ED9800377512 /* believe.png */; };
+		995A55282243EFCA00377512 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55272243EFCA00377512 /* ImageFetcher.swift */; };
+		995A552A2243F3C600377512 /* MockImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55292243F3C600377512 /* MockImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		995A55212243E96300377512 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		995A55232243EBE500377512 /* Album+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Album+Builder.swift"; sourceTree = "<group>"; };
 		995A55252243ED9800377512 /* believe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = believe.png; sourceTree = "<group>"; };
+		995A55272243EFCA00377512 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		995A55292243F3C600377512 /* MockImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +218,7 @@
 		995A54F32242CB9500377512 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				995A55292243F3C600377512 /* MockImageService.swift */,
 				995A54F42242CBBC00377512 /* MockSearchService.swift */,
 				995A55002242DACA00377512 /* MockURLSession.swift */,
 			);
@@ -243,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				995A550D2243A4E300377512 /* Environment.swift */,
+				995A55272243EFCA00377512 /* ImageFetcher.swift */,
 				995A54EF2242C9EB00377512 /* Result.swift */,
 				995A55022242DB0000377512 /* URLSessionProtocol.swift */,
 			);
@@ -402,6 +408,7 @@
 				995A54B52242A36900377512 /* AppDelegate.swift in Sources */,
 				995A551E2243B3D900377512 /* AlbumsViewController.swift in Sources */,
 				995A550E2243A4E300377512 /* Environment.swift in Sources */,
+				995A55282243EFCA00377512 /* ImageFetcher.swift in Sources */,
 				995A54F72242CEDD00377512 /* LastFMSearchService.swift in Sources */,
 				995A54F02242C9EB00377512 /* Result.swift in Sources */,
 				995A54E62242A8B200377512 /* LoadingView.swift in Sources */,
@@ -428,6 +435,7 @@
 				995A55052242DC4B00377512 /* Bundle+Helpers.swift in Sources */,
 				995A54FF2242D65200377512 /* ResultTests.swift in Sources */,
 				995A55102243A7CC00377512 /* EnvironmentTests.swift in Sources */,
+				995A552A2243F3C600377512 /* MockImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

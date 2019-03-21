@@ -11,6 +11,8 @@ import Foundation
 public struct Album {
     let name: String
     let artist: String
+    let coverURL: URL?
+    let thumbnailURL: URL?
 }
 
 extension Album: Codable {}

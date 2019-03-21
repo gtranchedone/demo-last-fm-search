@@ -18,6 +18,8 @@ class AlbumsViewController: UIViewController {
         }
     }
     
+    var imageService: ImageFetcher?
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
@@ -42,6 +44,7 @@ class AlbumsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.imageService = imageService
         viewModel.configure(collectionView: collectionView)
         collectionView.reloadData()
     }
