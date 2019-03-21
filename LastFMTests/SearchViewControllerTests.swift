@@ -77,7 +77,7 @@ class SearchViewControllerTests: XCTestCase {
     }
     
     func test_sets_loadingView_to_idle_after_performing_search_on_success() {
-        mockService.stubbedResult.searchAlbums = .success([Album.Builder().build()])
+        mockService.stubbedResult.searchAlbums = .success([AlbumSummary.Builder().build()])
         performSearch()
         XCTAssertEqual(viewController.loadingView.state, .idle)
     }
@@ -109,15 +109,15 @@ class SearchViewControllerTests: XCTestCase {
     }
     
     func test_sets_albums_to_contentViewController_after_performing_search_on_success() {
-        let albums = [Album.Builder().build()]
+        let albums = [AlbumSummary.Builder().build()]
         mockService.stubbedResult.searchAlbums = .success(albums)
         performSearch()
         XCTAssertEqual(viewController.contentViewController.albums, albums)
     }
     
     func test_sets_albums_to_contentViewController_after_performing_search_on_success_no_result() {
-        viewController.contentViewController.albums = [Album.Builder().build()]
-        let albums: [Album] = []
+        viewController.contentViewController.albums = [AlbumSummary.Builder().build()]
+        let albums: [AlbumSummary] = []
         mockService.stubbedResult.searchAlbums = .success(albums)
         performSearch()
         XCTAssertEqual(viewController.contentViewController.albums, albums)

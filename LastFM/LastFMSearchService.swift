@@ -26,7 +26,7 @@ class LastFMSearchService: SearchService {
         self.apiKey = apiKey
     }
     
-    func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void) {
+    func searchAlbums(query: String, completion: @escaping (Result<[AlbumSummary]>) -> Void) {
         do {
             let url = try composeURLForAlbumSearch(query: query)
             let task = session.task(with: url) { [weak self] (data, response, error) in

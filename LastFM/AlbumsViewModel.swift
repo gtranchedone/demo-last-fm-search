@@ -21,15 +21,15 @@ class AlbumsViewModel {
         collectionView.register(AlbumCell.self, forCellWithReuseIdentifier: identifier)
     }
     
-    func dequeCell(for album: Album, at indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+    func dequeCell(for album: AlbumSummary, at indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
         let identifier = CellIdentifier.standardAlbum.rawValue
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         if let theCell = cell as? AlbumCell {
             theCell.cover = nil
             theCell.title = album.name
             theCell.artist = album.artist
-            if let thumbnailURL = album.thumbnailURL {
-                fetchImage(url: thumbnailURL, for: theCell, at: indexPath, collectionView: collectionView)
+            if let coverURL = album.coverURL {
+                fetchImage(url: coverURL, for: theCell, at: indexPath, collectionView: collectionView)
             }
         }
         return cell

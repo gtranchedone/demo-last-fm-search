@@ -8,13 +8,10 @@
 
 import Foundation
 
-public struct Album {
+public struct AlbumSummary {
     let name: String
     let artist: String
     let coverURL: URL?
-    let thumbnailURL: URL?
 }
 
-extension Album: Codable {}
-
-extension Album: Equatable {}
+extension AlbumSummary: Equatable {}

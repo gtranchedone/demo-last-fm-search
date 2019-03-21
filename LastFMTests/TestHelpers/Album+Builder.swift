@@ -9,7 +9,7 @@
 import Foundation
 @testable import LastFM
 
-extension Album {
+extension AlbumSummary {
     
     struct Builder {
         private var name: String = "An album"
@@ -37,12 +37,11 @@ extension Album {
             return self
         }
         
-        func build() -> Album {
-            return Album(
+        func build() -> AlbumSummary {
+            return AlbumSummary(
                 name: self.name,
                 artist: self.artist,
-                coverURL: self.coverURL,
-                thumbnailURL: self.thumbnailURL
+                coverURL: self.coverURL
             )
         }
     }

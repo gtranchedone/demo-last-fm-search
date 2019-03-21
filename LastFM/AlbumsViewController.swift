@@ -10,7 +10,7 @@ import UIKit
 
 class AlbumsViewController: UIViewController {
     
-    var albums: [Album] = [] {
+    var albums: [AlbumSummary] = [] {
         didSet {
             if isViewLoaded {
                 collectionView.reloadData()

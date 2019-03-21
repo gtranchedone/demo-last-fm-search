@@ -48,17 +48,14 @@ struct AlbumSearchResponse: Codable {
     private let results: Result
     
     /// Use this calculated property to make the API data into models the app understands
-    var albums: [Album] {
+    var albums: [AlbumSummary] {
         return results.albummatches.album.map({ data in
-            let coverURLString = data.image.filter({ $0.size == .extralarge }).first
-            let thumbnailURLString = data.image.filter({ $0.size == .large }).first
+            let coverURLString = data.image.filter({ $0.size == .large }).first
             let coverURL = coverURLString == nil ? nil : URL(string: coverURLString!.text)
-            let thumbnailURL = thumbnailURLString == nil ? nil : URL(string: coverURLString!.text)
-            return Album(
+            return AlbumSummary(
                 name: data.name,
                 artist: data.artist,
-                coverURL: coverURL,
-                thumbnailURL: thumbnailURL
+                coverURL: coverURL
             )
         })
     }

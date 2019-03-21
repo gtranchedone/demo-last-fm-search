@@ -10,7 +10,7 @@ import UIKit
 
 public protocol SearchService {
     
-    func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void)
+    func searchAlbums(query: String, completion: @escaping (Result<[AlbumSummary]>) -> Void)
     
 }
 
@@ -44,7 +44,7 @@ class SearchViewController: UIViewController {
         })
     }
     
-    private func handleSearchResult(_ result: Result<[Album]>, searchTerm: String) {
+    private func handleSearchResult(_ result: Result<[AlbumSummary]>, searchTerm: String) {
         switch result {
             case .success(let albums):
                 handleSearchSuccess(albums: albums)
@@ -54,7 +54,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func handleSearchSuccess(albums: [Album]) {
+    private func handleSearchSuccess(albums: [AlbumSummary]) {
         if albums.isEmpty {
             loadingView.state = .error(
                 message: "No results",

@@ -16,7 +16,7 @@ class MockSearchService: SearchService {
     }
     
     struct StubbedResult {
-        var searchAlbums: Result<[Album]> = .failure(Error.notAssigned)
+        var searchAlbums: Result<[AlbumSummary]> = .failure(Error.notAssigned)
     }
     
     struct RecordedInvocations {
@@ -26,7 +26,7 @@ class MockSearchService: SearchService {
     var stubbedResult = StubbedResult()
     private(set) var recordedInvocations = RecordedInvocations()
     
-    func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void) {
+    func searchAlbums(query: String, completion: @escaping (Result<[AlbumSummary]>) -> Void) {
         recordedInvocations.searchAlbums.append(query)
         DispatchQueue.global(qos: .background).async {
             completion(self.stubbedResult.searchAlbums)
