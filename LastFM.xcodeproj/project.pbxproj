@@ -129,16 +129,15 @@
 		995A54B32242A36800377512 /* LastFM */ = {
 			isa = PBXGroup;
 			children = (
-				995A55092243020600377512 /* APISupport */,
 				995A54C02242A36B00377512 /* Info.plist */,
 				995A54F12242CB0B00377512 /* Album.swift */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
 				995A54F62242CEDD00377512 /* LastFMSearchService.swift */,
 				995A54E52242A8B200377512 /* LoadingView.swift */,
-				995A54EF2242C9EB00377512 /* Result.swift */,
 				995A54E92242C75500377512 /* SearchViewController.swift */,
-				995A55022242DB0000377512 /* URLSessionProtocol.swift */,
 				995A54BB2242A36B00377512 /* Assets.xcassets */,
+				995A55092243020600377512 /* APISupport */,
+				995A550C2243A49700377512 /* Helpers */,
 				995A54BD2242A36B00377512 /* LaunchScreen.storyboard */,
 				995A54B82242A36900377512 /* Main.storyboard */,
 			);
@@ -203,6 +202,15 @@
 				995A550A2243021C00377512 /* AlbumSearchResponse.swift */,
 			);
 			path = APISupport;
+			sourceTree = "<group>";
+		};
+		995A550C2243A49700377512 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				995A54EF2242C9EB00377512 /* Result.swift */,
+				995A55022242DB0000377512 /* URLSessionProtocol.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
