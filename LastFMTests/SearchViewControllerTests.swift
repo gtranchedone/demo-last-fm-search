@@ -29,6 +29,10 @@ class SearchViewControllerTests: XCTestCase {
         viewController = nil
         super.tearDown()
     }
+    
+    func test_is_delegate_of_searchBar() {
+        XCTAssertTrue(viewController.searchBar?.delegate === viewController)
+    }
 
     func test_has_contentViewController() {
         XCTAssertNotNil(viewController.contentViewController)

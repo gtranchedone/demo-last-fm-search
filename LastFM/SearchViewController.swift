@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
 
     var service: SearchService?
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loadingView: LoadingView!
     weak var contentViewController: AlbumsViewController!
     

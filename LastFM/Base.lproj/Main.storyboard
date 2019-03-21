@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--LastFM Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SearchViewController" customModule="LastFM" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,9 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Oyn-Vg-TCS">
+                            <searchBar contentMode="redraw" placeholder="Search album" translatesAutoresizingMaskIntoConstraints="NO" id="Oyn-Vg-TCS">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9bR-wp-hF0"/>
+                                </connections>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTV-OS-cc1">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
@@ -49,9 +52,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f24-Aa-19D"/>
+                    <navigationItem key="navigationItem" title="LastFM Search" id="f24-Aa-19D"/>
                     <connections>
                         <outlet property="loadingView" destination="fmr-0n-mXe" id="XfP-qL-dmG"/>
+                        <outlet property="searchBar" destination="Oyn-Vg-TCS" id="1dd-1Q-W5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
