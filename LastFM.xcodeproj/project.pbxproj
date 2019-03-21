@@ -25,6 +25,11 @@
 		995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54FA2242CF0C00377512 /* LastFMSearchServiceTests.swift */; };
 		995A54FD2242D43900377512 /* UIStoryboard+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */; };
 		995A54FF2242D65200377512 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A54FE2242D65200377512 /* ResultTests.swift */; };
+		995A55012242DACA00377512 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55002242DACA00377512 /* MockURLSession.swift */; };
+		995A55032242DB0000377512 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55022242DB0000377512 /* URLSessionProtocol.swift */; };
+		995A55052242DC4B00377512 /* Bundle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55042242DC4B00377512 /* Bundle+Helpers.swift */; };
+		995A55082242DDB600377512 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55072242DDB600377512 /* HelperFunctions.swift */; };
+		995A550B2243021C00377512 /* AlbumSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A550A2243021C00377512 /* AlbumSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +74,11 @@
 		995A54FA2242CF0C00377512 /* LastFMSearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSearchServiceTests.swift; sourceTree = "<group>"; };
 		995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Helpers.swift"; sourceTree = "<group>"; };
 		995A54FE2242D65200377512 /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		995A55002242DACA00377512 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		995A55022242DB0000377512 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		995A55042242DC4B00377512 /* Bundle+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Helpers.swift"; sourceTree = "<group>"; };
+		995A55072242DDB600377512 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		995A550A2243021C00377512 /* AlbumSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +129,7 @@
 		995A54B32242A36800377512 /* LastFM */ = {
 			isa = PBXGroup;
 			children = (
+				995A55092243020600377512 /* APISupport */,
 				995A54C02242A36B00377512 /* Info.plist */,
 				995A54F12242CB0B00377512 /* Album.swift */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
@@ -126,6 +137,7 @@
 				995A54E52242A8B200377512 /* LoadingView.swift */,
 				995A54EF2242C9EB00377512 /* Result.swift */,
 				995A54E92242C75500377512 /* SearchViewController.swift */,
+				995A55022242DB0000377512 /* URLSessionProtocol.swift */,
 				995A54BB2242A36B00377512 /* Assets.xcassets */,
 				995A54BD2242A36B00377512 /* LaunchScreen.storyboard */,
 				995A54B82242A36900377512 /* Main.storyboard */,
@@ -142,7 +154,7 @@
 				995A54E72242A8C200377512 /* LoadingViewTests.swift */,
 				995A54FE2242D65200377512 /* ResultTests.swift */,
 				995A54EB2242C7AD00377512 /* SearchViewControllerTests.swift */,
-				995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */,
+				995A55062242DC9B00377512 /* Helpers */,
 				995A54F32242CB9500377512 /* Mocks */,
 				995A54E22242A41C00377512 /* Stubs */,
 			);
@@ -170,8 +182,27 @@
 			isa = PBXGroup;
 			children = (
 				995A54F42242CBBC00377512 /* MockSearchService.swift */,
+				995A55002242DACA00377512 /* MockURLSession.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		995A55062242DC9B00377512 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				995A55042242DC4B00377512 /* Bundle+Helpers.swift */,
+				995A55072242DDB600377512 /* HelperFunctions.swift */,
+				995A54FC2242D43900377512 /* UIStoryboard+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		995A55092243020600377512 /* APISupport */ = {
+			isa = PBXGroup;
+			children = (
+				995A550A2243021C00377512 /* AlbumSearchResponse.swift */,
+			);
+			path = APISupport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995A55032242DB0000377512 /* URLSessionProtocol.swift in Sources */,
 				995A54EA2242C75500377512 /* SearchViewController.swift in Sources */,
+				995A550B2243021C00377512 /* AlbumSearchResponse.swift in Sources */,
 				995A54B52242A36900377512 /* AppDelegate.swift in Sources */,
 				995A54F72242CEDD00377512 /* LastFMSearchService.swift in Sources */,
 				995A54F02242C9EB00377512 /* Result.swift in Sources */,
@@ -319,12 +352,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995A55082242DDB600377512 /* HelperFunctions.swift in Sources */,
+				995A55012242DACA00377512 /* MockURLSession.swift in Sources */,
 				995A54F92242CEF500377512 /* AppDelegateTests.swift in Sources */,
 				995A54F52242CBBC00377512 /* MockSearchService.swift in Sources */,
 				995A54FD2242D43900377512 /* UIStoryboard+Helpers.swift in Sources */,
 				995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */,
 				995A54EC2242C7AD00377512 /* SearchViewControllerTests.swift in Sources */,
 				995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */,
+				995A55052242DC4B00377512 /* Bundle+Helpers.swift in Sources */,
 				995A54FF2242D65200377512 /* ResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,7 @@ class MockSearchService: SearchService {
     }
     
     var stubbedResult = StubbedResult()
-    var recordedInvocations = RecordedInvocations()
+    private(set) var recordedInvocations = RecordedInvocations()
     
     func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void) {
         recordedInvocations.searchAlbums.append(query)

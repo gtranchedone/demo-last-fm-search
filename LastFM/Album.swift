@@ -8,4 +8,10 @@
 
 import Foundation
 
-public struct Album: Equatable {}
+public struct Album {
+    let name: String
+}
+
+extension Album: Codable {}
+
+extension Album: Equatable {}
