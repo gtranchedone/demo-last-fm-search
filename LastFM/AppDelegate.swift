@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var environment = try? Environment()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configureSearchViewController()
@@ -19,10 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureSearchViewController() {
+        guard let apiKey = environment?["API_KEY"] else {
+            return
+        }
         let navigationController = window?.rootViewController as? UINavigationController
         let viewController = navigationController?.topViewController as? SearchViewController
-        viewController?.service = LastFMSearchService()
+        viewController?.service = LastFMSearchService(apiKey: apiKey)
     }
 
 }
-

@@ -16,8 +16,8 @@ class LastFMSearchServiceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        service = LastFMSearchService()
         mockSession = MockURLSession()
+        service = LastFMSearchService(apiKey: "api_key")
         service.session = mockSession
     }
 
@@ -47,6 +47,20 @@ class LastFMSearchServiceTests: XCTestCase {
         let recordedURLs = mockSession.recordedInvocations.task
         XCTAssertEqual(recordedURLs.count, 1)
         let expectedURLString = "https://ws.audioscrobbler.com/2.0/?album=Anything%20Else&api_key=api_key&format=json&method=album.search"
+        XCTAssertEqual(recordedURLs[0], URL(string: expectedURLString))
+    }
+    
+    func test_searchAlbums_requestsCorrectURL_andParameters_different_apiKey() {
+        service = LastFMSearchService(apiKey: "other_api_key")
+        service.session = mockSession
+        let e = expectation(description: "Search for albums")
+        service.searchAlbums(query: "Anything Else") { (result) in
+            e.fulfill()
+        }
+        waitForExpectations(timeout: 10)
+        let recordedURLs = mockSession.recordedInvocations.task
+        XCTAssertEqual(recordedURLs.count, 1)
+        let expectedURLString = "https://ws.audioscrobbler.com/2.0/?album=Anything%20Else&api_key=other_api_key&format=json&method=album.search"
         XCTAssertEqual(recordedURLs[0], URL(string: expectedURLString))
     }
 

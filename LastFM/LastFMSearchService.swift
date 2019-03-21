@@ -19,7 +19,12 @@ class LastFMSearchService: SearchService {
         case albumSearch = "https://ws.audioscrobbler.com/2.0/"
     }
     
+    let apiKey: String
     var session: URLSessionProtocol = URLSession.shared
+    
+    init(apiKey: String) {
+        self.apiKey = apiKey
+    }
     
     func searchAlbums(query: String, completion: @escaping (Result<[Album]>) -> Void) {
         do {
@@ -46,7 +51,7 @@ class LastFMSearchService: SearchService {
         var urlComponents = URLComponents(string: Endpoints.albumSearch.rawValue)
         urlComponents?.queryItems = [
             URLQueryItem(name: "album", value: query),
-            URLQueryItem(name: "api_key", value: "api_key"),
+            URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "method", value: "album.search"),
         ]

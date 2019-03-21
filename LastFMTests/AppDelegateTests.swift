@@ -33,6 +33,14 @@ class AppDelegateTests: XCTestCase {
         XCTAssertNotNil(viewController?.service as? LastFMSearchService)
     }
     
+    func test_fails_configuration_if_environment_does_not_contain_apiKey() throws {
+        appDelegate.environment = try Environment(fileNamed: "broken_environment", bundle: .unitTests)
+        let didConfigure = appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+        XCTAssertTrue(didConfigure)
+        let viewController = findSearchViewController()
+        XCTAssertNil(viewController?.service)
+    }
+    
     private func findSearchViewController() -> SearchViewController? {
         let navigationController = appDelegate.window?.rootViewController as? UINavigationController
         return navigationController?.topViewController as? SearchViewController
