@@ -50,6 +50,7 @@
 		995A55322244ECB400377512 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55312244ECB300377512 /* AlbumDetailsViewController.swift */; };
 		995A55342244ECD700377512 /* AlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */; };
 		995A55362245092A00377512 /* weezer.png in Resources */ = {isa = PBXBuildFile; fileRef = 995A55352245092A00377512 /* weezer.png */; };
+		995A55382245150100377512 /* AlbumTracksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55372245150100377512 /* AlbumTracksViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		995A55312244ECB300377512 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		995A55352245092A00377512 /* weezer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weezer.png; sourceTree = "<group>"; };
+		995A55372245150100377512 /* AlbumTracksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTracksViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				995A55312244ECB300377512 /* AlbumDetailsViewController.swift */,
 				995A551D2243B3D900377512 /* AlbumsViewController.swift */,
 				995A551F2243E8D000377512 /* AlbumsViewModel.swift */,
+				995A55372245150100377512 /* AlbumTracksViewModel.swift */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
 				995A552B2243FCC900377512 /* DefaultImageService.swift */,
 				995A54F62242CEDD00377512 /* LastFMSearchService.swift */,
@@ -427,6 +430,7 @@
 				995A550B2243021C00377512 /* AlbumSearchResponse.swift in Sources */,
 				995A54B52242A36900377512 /* AppDelegate.swift in Sources */,
 				995A551E2243B3D900377512 /* AlbumsViewController.swift in Sources */,
+				995A55382245150100377512 /* AlbumTracksViewModel.swift in Sources */,
 				995A550E2243A4E300377512 /* Environment.swift in Sources */,
 				995A55322244ECB400377512 /* AlbumDetailsViewController.swift in Sources */,
 				995A55282243EFCA00377512 /* ImageService.swift in Sources */,

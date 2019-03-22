@@ -20,7 +20,59 @@ struct AlbumDetailsResponse: Codable {
         return AlbumDetails(
             name: "Album",
             artist: "Artist",
-            coverURL: URL(string: "https://example.com")
+            coverURL: URL(string: "https://example.com/cover.png"),
+            tracks: [
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 1",
+                    url: URL(string: "https://example.com/song_1")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 2",
+                    url: URL(string: "https://example.com/song_2")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 3",
+                    url: URL(string: "https://example.com/song_3")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 4",
+                    url: URL(string: "https://example.com/song_4")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 5",
+                    url: URL(string: "https://example.com/song_5")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 6",
+                    url: URL(string: "https://example.com/song_6")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 7",
+                    url: URL(string: "https://example.com/song_7")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 8",
+                    url: URL(string: "https://example.com/song_8")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 9",
+                    url: URL(string: "https://example.com/song_9")
+                ),
+                AlbumDetails.Track(
+                    duration: 200,
+                    name: "Song 10",
+                    url: URL(string: "https://example.com/song_10")
+                )
+            ]
         )
     }
 }
@@ -33,6 +85,7 @@ struct AlbumSearchResponse: Codable {
         case medium
         case large
         case extralarge
+        case mega
     }
     
     fileprivate struct Result: Codable {

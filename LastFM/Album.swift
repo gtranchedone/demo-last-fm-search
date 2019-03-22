@@ -17,9 +17,18 @@ public struct AlbumSummary {
 extension AlbumSummary: Equatable {}
 
 public struct AlbumDetails {
+    
+    public struct Track {
+        let duration: TimeInterval
+        let name: String
+        let url: URL?
+    }
+    
     let name: String
     let artist: String
     let coverURL: URL?
+    let tracks: [Track]
 }
 
 extension AlbumDetails: Equatable {}
+extension AlbumDetails.Track: Equatable {}
