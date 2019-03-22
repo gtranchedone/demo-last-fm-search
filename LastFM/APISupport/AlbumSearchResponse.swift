@@ -8,77 +8,7 @@
 
 import Foundation
 
-struct AlbumDetailsResponse: Codable {
-    
-    struct Album: Codable {
-        let name: String
-    }
-    
-    private let album: Album
-    
-    var details: AlbumDetails {
-        return AlbumDetails(
-            name: "Album",
-            artist: "Artist",
-            coverURL: URL(string: "https://example.com/cover.png"),
-            tracks: [
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 1",
-                    url: URL(string: "https://example.com/song_1")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 2",
-                    url: URL(string: "https://example.com/song_2")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 3",
-                    url: URL(string: "https://example.com/song_3")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 4",
-                    url: URL(string: "https://example.com/song_4")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 5",
-                    url: URL(string: "https://example.com/song_5")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 6",
-                    url: URL(string: "https://example.com/song_6")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 7",
-                    url: URL(string: "https://example.com/song_7")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 8",
-                    url: URL(string: "https://example.com/song_8")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 9",
-                    url: URL(string: "https://example.com/song_9")
-                ),
-                AlbumDetails.Track(
-                    duration: 200,
-                    name: "Song 10",
-                    url: URL(string: "https://example.com/song_10")
-                )
-            ]
-        )
-    }
-}
-
-/// This is the structure of the API response
-struct AlbumSearchResponse: Codable {
+fileprivate struct ImageData: Codable {
     
     fileprivate enum ImageSize: String, Codable {
         case small
@@ -86,23 +16,67 @@ struct AlbumSearchResponse: Codable {
         case large
         case extralarge
         case mega
+        case unknown = ""
     }
+    
+    let text: String
+    let size: ImageSize
+    
+    private enum CodingKeys : String, CodingKey {
+        case size, text = "#text"
+    }
+}
+
+struct AlbumDetailsResponse: Codable {
+    
+    fileprivate struct Album: Codable {
+        
+        fileprivate struct TrackData: Codable {
+            
+            fileprivate struct Track: Codable {
+                let duration: String
+                let name: String
+                let url: String
+            }
+            
+            let track: [Track]
+            
+        }
+        
+        let name: String
+        let artist: String
+        let image: [ImageData]
+        let tracks: TrackData
+    }
+    
+    private let album: Album
+    
+    var details: AlbumDetails {
+        let coverData = album.image.filter({ $0.size == .mega }).first
+        let coverURL = coverData == nil ? nil : URL(string: coverData!.text)
+        return AlbumDetails(
+            name: album.name,
+            artist: album.artist,
+            coverURL: coverURL,
+            tracks: album.tracks.track.map({
+                AlbumDetails.Track(
+                    duration: TimeInterval($0.duration) ?? 0,
+                    name: $0.name,
+                    url: URL(string: $0.url)
+                )
+            })
+        )
+    }
+}
+
+/// This is the structure of the API response
+struct AlbumSearchResponse: Codable {
     
     fileprivate struct Result: Codable {
         
         fileprivate struct Matches: Codable {
             
             fileprivate struct AlbumData: Codable {
-                
-                fileprivate struct ImageData: Codable {
-                    let text: String
-                    let size: ImageSize
-                    
-                    private enum CodingKeys : String, CodingKey {
-                        case size, text = "#text"
-                    }
-                }
-                
                 let name: String
                 let artist: String
                 let image: [ImageData]

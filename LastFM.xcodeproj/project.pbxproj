@@ -51,6 +51,8 @@
 		995A55342244ECD700377512 /* AlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */; };
 		995A55362245092A00377512 /* weezer.png in Resources */ = {isa = PBXBuildFile; fileRef = 995A55352245092A00377512 /* weezer.png */; };
 		995A55382245150100377512 /* AlbumTracksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55372245150100377512 /* AlbumTracksViewModel.swift */; };
+		995A553A22451EE700377512 /* AlbumSummaryParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A553922451EE700377512 /* AlbumSummaryParsingTests.swift */; };
+		995A553C22451EFC00377512 /* AlbumDetailsParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A553B22451EFC00377512 /* AlbumDetailsParsingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,8 @@
 		995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		995A55352245092A00377512 /* weezer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weezer.png; sourceTree = "<group>"; };
 		995A55372245150100377512 /* AlbumTracksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTracksViewModel.swift; sourceTree = "<group>"; };
+		995A553922451EE700377512 /* AlbumSummaryParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSummaryParsingTests.swift; sourceTree = "<group>"; };
+		995A553B22451EFC00377512 /* AlbumDetailsParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsParsingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				995A54CB2242A36B00377512 /* Info.plist */,
+				995A553B22451EFC00377512 /* AlbumDetailsParsingTests.swift */,
 				995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */,
+				995A553922451EE700377512 /* AlbumSummaryParsingTests.swift */,
 				995A551B2243B3AA00377512 /* AlbumsViewControllerTests.swift */,
 				995A54F82242CEF500377512 /* AppDelegateTests.swift */,
 				995A552D2243FFDE00377512 /* DefaultImageServiceTests.swift */,
@@ -456,7 +462,9 @@
 				995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */,
 				995A54EC2242C7AD00377512 /* SearchViewControllerTests.swift in Sources */,
 				995A55342244ECD700377512 /* AlbumDetailsViewControllerTests.swift in Sources */,
+				995A553A22451EE700377512 /* AlbumSummaryParsingTests.swift in Sources */,
 				995A551C2243B3AA00377512 /* AlbumsViewControllerTests.swift in Sources */,
+				995A553C22451EFC00377512 /* AlbumDetailsParsingTests.swift in Sources */,
 				995A54E82242A8C200377512 /* LoadingViewTests.swift in Sources */,
 				995A55242243EBE500377512 /* Album+Builder.swift in Sources */,
 				995A551A2243B19F00377512 /* URLSessionProtocolTests.swift in Sources */,
