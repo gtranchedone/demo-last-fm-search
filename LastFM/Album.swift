@@ -15,3 +15,11 @@ public struct AlbumSummary {
 }
 
 extension AlbumSummary: Equatable {}
+
+public struct AlbumDetails {
+    let name: String
+    let artist: String
+    let coverURL: URL?
+}
+
+extension AlbumDetails: Equatable {}

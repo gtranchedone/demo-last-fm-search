@@ -17,10 +17,12 @@ class MockSearchService: SearchService {
     
     struct StubbedResult {
         var searchAlbums: Result<[AlbumSummary]> = .failure(Error.notAssigned)
+        var searchAlbumsDetails: Result<AlbumDetails> = .failure(Error.notAssigned)
     }
     
     struct RecordedInvocations {
         var searchAlbums: [String] = []
+        var searchAlbumsDetails: [AlbumSummary] = []
     }
     
     var stubbedResult = StubbedResult()
@@ -30,6 +32,13 @@ class MockSearchService: SearchService {
         recordedInvocations.searchAlbums.append(query)
         DispatchQueue.global(qos: .background).async {
             completion(self.stubbedResult.searchAlbums)
+        }
+    }
+    
+    func searchAlbumDetails(album: AlbumSummary, completion: @escaping (Result<AlbumDetails>) -> Void) {
+        recordedInvocations.searchAlbumsDetails.append(album)
+        DispatchQueue.global(qos: .background).async {
+            completion(self.stubbedResult.searchAlbumsDetails)
         }
     }
     

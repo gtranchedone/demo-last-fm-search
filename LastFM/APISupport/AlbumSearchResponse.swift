@@ -8,6 +8,23 @@
 
 import Foundation
 
+struct AlbumDetailsResponse: Codable {
+    
+    struct Album: Codable {
+        let name: String
+    }
+    
+    private let album: Album
+    
+    var details: AlbumDetails {
+        return AlbumDetails(
+            name: "Album",
+            artist: "Artist",
+            coverURL: URL(string: "https://example.com")
+        )
+    }
+}
+
 /// This is the structure of the API response
 struct AlbumSearchResponse: Codable {
     

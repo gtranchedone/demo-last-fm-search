@@ -11,6 +11,7 @@ import UIKit
 public protocol SearchService {
     
     func searchAlbums(query: String, completion: @escaping (Result<[AlbumSummary]>) -> Void)
+    func searchAlbumDetails(album: AlbumSummary, completion: @escaping (Result<AlbumDetails>) -> Void)
     
 }
 

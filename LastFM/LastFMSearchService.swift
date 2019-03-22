@@ -16,7 +16,7 @@ class LastFMSearchService: SearchService {
     }
     
     private enum Endpoints: String {
-        case albumSearch = "https://ws.audioscrobbler.com/2.0/"
+        case baseURLString = "https://ws.audioscrobbler.com/2.0/"
     }
     
     let apiKey: String
@@ -27,33 +27,57 @@ class LastFMSearchService: SearchService {
     }
     
     func searchAlbums(query: String, completion: @escaping (Result<[AlbumSummary]>) -> Void) {
-        do {
-            let url = try composeURLForAlbumSearch(query: query)
-            let task = session.task(with: url) { [weak self] (data, response, error) in
-                guard let self = self else { return }
-                do {
-                    let result: AlbumSearchResponse = try self.parseResponse((data, response, error))
-                    completion(.success(result.albums))
-                }
-                catch {
-                    completion(.failure(error))
-                }
+        guard let url = try? composeURLForAlbumSearch(query: query) else { return }
+        fetchData(url: url, completion: { (result: Result<AlbumSearchResponse>) in
+            completion(result.map({ $0.albums }))
+        })
+    }
+    
+    func searchAlbumDetails(album: AlbumSummary, completion: @escaping (Result<AlbumDetails>) -> Void) {
+        guard let url = try? composeURLForAlbumDetailsSearch(album: album) else { return }
+        fetchData(url: url, completion: { (result: Result<AlbumDetailsResponse>) in
+            completion(result.map({ $0.details }))
+        })
+    }
+    
+    private func fetchData<T: Codable>(url: URL, completion: @escaping (Result<T>) -> Void) {
+        let task = session.task(with: url) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            do {
+                let result: T = try self.parseResponse((data, response, error))
+                completion(.success(result))
             }
-            task.resume()
+            catch {
+                completion(.failure(error))
+            }
         }
-        catch {
-            completion(.failure(error))
-        }
+        task.resume()
     }
     
     private func composeURLForAlbumSearch(query: String) throws -> URL {
-        var urlComponents = URLComponents(string: Endpoints.albumSearch.rawValue)
-        urlComponents?.queryItems = [
+        let queryItems = [
             URLQueryItem(name: "album", value: query),
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "format", value: "json"),
-            URLQueryItem(name: "method", value: "album.search"),
+            URLQueryItem(name: "method", value: "album.search")
         ]
+        return try composeURL(base: Endpoints.baseURLString.rawValue, queryItems: queryItems)
+    }
+    
+    private func composeURLForAlbumDetailsSearch(album: AlbumSummary) throws -> URL {
+        let queryItems = [
+            URLQueryItem(name: "album", value: album.name),
+            URLQueryItem(name: "artist", value: album.artist),
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "format", value: "json"),
+            URLQueryItem(name: "method", value: "album.getinfo")
+        ]
+        return try composeURL(base: Endpoints.baseURLString.rawValue, queryItems: queryItems)
+    }
+    
+    private func composeURL(base: String, queryItems: [URLQueryItem]) throws -> URL {
+        var urlComponents = URLComponents(string: base)
+        urlComponents?.queryItems = queryItems
         guard let url = urlComponents?.url else {
             throw Error.cannotCreateURL
         }
