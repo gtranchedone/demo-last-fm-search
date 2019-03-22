@@ -17,6 +17,10 @@ public protocol SearchService {
 
 class SearchViewController: UIViewController {
 
+    enum Segue: String {
+        case albumDetailsSegue = "AlbumDetailsSegue"
+    }
+    
     var searchService: SearchService?
     var imageService: ImageService? {
         didSet {
@@ -26,13 +30,30 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loadingView: LoadingView!
-    weak var contentViewController: AlbumsViewController!
+    weak var contentViewController: AlbumsViewController! {
+        didSet {
+            contentViewController?.imageService = imageService
+            contentViewController?.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         contentViewController = children.first as? AlbumsViewController
-        contentViewController?.imageService = imageService
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.albumDetailsSegue.rawValue {
+            let detailsViewController = segue.destination as? AlbumDetailsViewController
+            detailsViewController?.searchService = searchService
+            detailsViewController?.imageService = imageService
+            detailsViewController?.album = sender as? AlbumSummary
+        }
+    }
+    
+}
+
+extension SearchViewController {
     
     func search(_ text: String, completion: (() -> Void)? = nil) {
         loadingView.state = .loading(message: "Loading")
@@ -93,3 +114,10 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
+extension SearchViewController: AlbumsViewControllerDelegate {
+    
+    func albumsViewController(_ viewController: AlbumsViewController, didSelectAlbum album: AlbumSummary) {
+        performSegue(withIdentifier: Segue.albumDetailsSegue.rawValue, sender: album)
+    }
+    
+}

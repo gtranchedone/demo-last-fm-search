@@ -87,5 +87,24 @@ class AlbumsViewControllerTests: XCTestCase {
         XCTAssertNotNil(image)
         XCTAssertEqual(cell?.cover?.pngData(), image.pngData())
     }
+    
+    func test_notifies_delegate_of_album_selection() {
+        class MockDelegate: AlbumsViewControllerDelegate {
+            private(set) var receivedAlbum: AlbumSummary?
+            
+            func albumsViewController(_ viewController: AlbumsViewController, didSelectAlbum album: AlbumSummary) {
+                receivedAlbum = album
+            }
+        }
+        
+        let mockDelegate = MockDelegate()
+        viewController.delegate = mockDelegate
+        let indexPath = IndexPath(item: 0, section: 0)
+        viewController.collectionView(viewController.collectionView, didSelectItemAt: indexPath)
+        XCTAssertEqual(mockDelegate.receivedAlbum, viewController.albums[0])
+        let otherIndexPath = IndexPath(item: 1, section: 0)
+        viewController.collectionView(viewController.collectionView, didSelectItemAt: otherIndexPath)
+        XCTAssertEqual(mockDelegate.receivedAlbum, viewController.albums[1])
+    }
 
 }

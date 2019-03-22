@@ -37,6 +37,7 @@ class SearchViewControllerTests: XCTestCase {
 
     func test_has_contentViewController() {
         XCTAssertNotNil(viewController.contentViewController)
+        XCTAssertTrue(viewController.contentViewController.delegate === viewController)
         XCTAssertNotNil(viewController.contentViewController?.imageService as? MockImageService)
     }
     
@@ -44,14 +45,15 @@ class SearchViewControllerTests: XCTestCase {
         let albumsViewController = AlbumsViewController()
         viewController.contentViewController = albumsViewController
         XCTAssertEqual(viewController.contentViewController, albumsViewController)
+        XCTAssertTrue(viewController.contentViewController.delegate === viewController)
     }
     
     func test_passes_imageService_to_contentViewController_when_reset() {
         let albumsViewController = AlbumsViewController()
         viewController.contentViewController = albumsViewController
-        XCTAssertNil(albumsViewController.imageService as? MockImageService)
         viewController.imageService = MockImageService()
         XCTAssertNotNil(viewController.contentViewController?.imageService as? MockImageService)
+        XCTAssertTrue(viewController.contentViewController.delegate === viewController)
     }
     
     func test_calls_searchService_on_search() {
@@ -123,7 +125,7 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.contentViewController.albums, albums)
     }
     
-    func test_dismissed_keyboard_after_keyboard_search() {
+    func test_dismisses_keyboard_after_keyboard_search() {
         class MockSearchBar: UISearchBar {
             private(set) var didDismiss = false
             override func resignFirstResponder() -> Bool {
@@ -138,7 +140,7 @@ class SearchViewControllerTests: XCTestCase {
         XCTAssertTrue(mockSearchBar.didDismiss)
     }
     
-    func test_dismissed_keyboard_after_keyboard_search_empty_text() {
+    func test_dismisses_keyboard_after_keyboard_search_empty_text() {
         class MockSearchBar: UISearchBar {
             private(set) var didDismiss = false
             override func resignFirstResponder() -> Bool {
@@ -151,6 +153,38 @@ class SearchViewControllerTests: XCTestCase {
         viewController.searchBar = mockSearchBar
         performSearchBarSearch(text: nil)
         XCTAssertTrue(mockSearchBar.didDismiss)
+    }
+    
+    func test_performs_segue_when_album_is_selected_in_contentViewController() {
+        class MockViewController: SearchViewController {
+            var performedSegueIdentifier: String?
+            var performedSegueSender: Any?
+            
+            override func performSegue(withIdentifier identifier: String, sender: Any?) {
+                performedSegueIdentifier = identifier
+                performedSegueSender = sender
+            }
+        }
+        
+        let vc = MockViewController()
+        let album = AlbumSummary.Builder().build()
+        vc.albumsViewController(viewController.contentViewController, didSelectAlbum: album)
+        XCTAssertEqual(vc.performedSegueIdentifier, SearchViewController.Segue.albumDetailsSegue.rawValue)
+        XCTAssertEqual(vc.performedSegueSender as? AlbumSummary, album)
+    }
+    
+    func test_prepareForSegue_configures_albumDetailsViewController_with_album_and_services() {
+        let detailsViewController = AlbumDetailsViewController()
+        let segue = UIStoryboardSegue(
+            identifier: SearchViewController.Segue.albumDetailsSegue.rawValue,
+            source: viewController,
+            destination: detailsViewController
+        )
+        let album = AlbumSummary.Builder().build()
+        viewController.prepare(for: segue, sender: album)
+        XCTAssertEqual(detailsViewController.album, album)
+        XCTAssertNotNil(detailsViewController.imageService as? MockImageService)
+        XCTAssertNotNil(detailsViewController.searchService as? MockSearchService)
     }
     
     private func performSearch(text: String = "Test 123", wait: Bool = true, beforeWait: (() -> Void)? = nil) {

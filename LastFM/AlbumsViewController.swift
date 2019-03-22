@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol AlbumsViewControllerDelegate: class {
+    
+    func albumsViewController(_ viewController: AlbumsViewController, didSelectAlbum album: AlbumSummary)
+    
+}
+
 class AlbumsViewController: UIViewController {
+    
+    weak var delegate: AlbumsViewControllerDelegate?
     
     var albums: [AlbumSummary] = [] {
         didSet {
@@ -58,6 +66,10 @@ class AlbumsViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    private func album(at indexPath: IndexPath) -> AlbumSummary {
+        return albums[indexPath.item]
+    }
+    
 }
 
 extension AlbumsViewController: UICollectionViewDataSource {
@@ -67,12 +79,16 @@ extension AlbumsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let album = albums[indexPath.item]
+        let album = self.album(at: indexPath)
         return viewModel.dequeCell(for: album, at: indexPath, collectionView: collectionView)
     }
     
 }
 
 extension AlbumsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.albumsViewController(self, didSelectAlbum: album(at: indexPath))
+    }
     
 }
