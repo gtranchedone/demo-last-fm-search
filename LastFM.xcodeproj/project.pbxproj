@@ -53,6 +53,8 @@
 		995A55382245150100377512 /* AlbumTracksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55372245150100377512 /* AlbumTracksViewModel.swift */; };
 		995A553A22451EE700377512 /* AlbumSummaryParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A553922451EE700377512 /* AlbumSummaryParsingTests.swift */; };
 		995A553C22451EFC00377512 /* AlbumDetailsParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A553B22451EFC00377512 /* AlbumDetailsParsingTests.swift */; };
+		995A553E2245278900377512 /* ExternalURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A553D2245278900377512 /* ExternalURLService.swift */; };
+		995A55402245287B00377512 /* MockExternalURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A553F2245287B00377512 /* MockExternalURLService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		995A55372245150100377512 /* AlbumTracksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTracksViewModel.swift; sourceTree = "<group>"; };
 		995A553922451EE700377512 /* AlbumSummaryParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSummaryParsingTests.swift; sourceTree = "<group>"; };
 		995A553B22451EFC00377512 /* AlbumDetailsParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsParsingTests.swift; sourceTree = "<group>"; };
+		995A553D2245278900377512 /* ExternalURLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalURLService.swift; sourceTree = "<group>"; };
+		995A553F2245287B00377512 /* MockExternalURLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExternalURLService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,7 @@
 				995A55372245150100377512 /* AlbumTracksViewModel.swift */,
 				995A54B42242A36900377512 /* AppDelegate.swift */,
 				995A552B2243FCC900377512 /* DefaultImageService.swift */,
+				995A553D2245278900377512 /* ExternalURLService.swift */,
 				995A54F62242CEDD00377512 /* LastFMSearchService.swift */,
 				995A54E52242A8B200377512 /* LoadingView.swift */,
 				995A54E92242C75500377512 /* SearchViewController.swift */,
@@ -245,6 +250,7 @@
 		995A54F32242CB9500377512 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				995A553F2245287B00377512 /* MockExternalURLService.swift */,
 				995A55292243F3C600377512 /* MockImageService.swift */,
 				995A54F42242CBBC00377512 /* MockSearchService.swift */,
 				995A55002242DACA00377512 /* MockURLSession.swift */,
@@ -446,6 +452,7 @@
 				995A54F22242CB0B00377512 /* Album.swift in Sources */,
 				995A55222243E96300377512 /* AlbumCell.swift in Sources */,
 				995A552C2243FCC900377512 /* DefaultImageService.swift in Sources */,
+				995A553E2245278900377512 /* ExternalURLService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +464,7 @@
 				995A55012242DACA00377512 /* MockURLSession.swift in Sources */,
 				995A54F92242CEF500377512 /* AppDelegateTests.swift in Sources */,
 				995A54F52242CBBC00377512 /* MockSearchService.swift in Sources */,
+				995A55402245287B00377512 /* MockExternalURLService.swift in Sources */,
 				995A54FD2242D43900377512 /* UIStoryboard+Helpers.swift in Sources */,
 				995A552E2243FFDE00377512 /* DefaultImageServiceTests.swift in Sources */,
 				995A54FB2242CF0C00377512 /* LastFMSearchServiceTests.swift in Sources */,

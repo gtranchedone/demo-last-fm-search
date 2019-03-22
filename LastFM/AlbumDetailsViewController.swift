@@ -17,6 +17,7 @@ class AlbumDetailsViewController: UITableViewController {
     }
     var imageService: ImageService?
     var searchService: SearchService?
+    var externalURLService: ExternalURLService = UIApplication.shared
     
     private var albumDetails: AlbumDetails?
     private let tracksViewModel = AlbumTracksViewModel()
@@ -99,6 +100,17 @@ class AlbumDetailsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let track = albumDetails?.tracks[indexPath.row] else { abort() }
         return tracksViewModel.cell(for: track, at: indexPath, in: tableView)
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let track = albumDetails?.tracks[indexPath.row], let url = track.url {
+            if externalURLService.canOpenURL(url) {
+                externalURLService.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
  
 }

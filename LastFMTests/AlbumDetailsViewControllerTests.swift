@@ -13,14 +13,17 @@ class AlbumDetailsViewControllerTests: XCTestCase {
 
     var mockImageService: MockImageService!
     var mockSearchService: MockSearchService!
+    var mockExternalURLService: MockExternalURLService!
     var viewController: AlbumDetailsViewController!
     
     override func setUp() {
         super.setUp()
         mockImageService = MockImageService()
         mockSearchService = MockSearchService()
+        mockExternalURLService = MockExternalURLService()
         let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "AlbumDetailsViewController")
         viewController = vc as? AlbumDetailsViewController
+        viewController.externalURLService = mockExternalURLService
         viewController.searchService = mockSearchService
         viewController.imageService = mockImageService
         viewController.album = AlbumSummary.Builder().build()
@@ -30,6 +33,7 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         viewController = nil
         mockImageService = nil
         mockSearchService = nil
+        mockExternalURLService = nil
         super.tearDown()
     }
 
@@ -122,6 +126,30 @@ class AlbumDetailsViewControllerTests: XCTestCase {
         let cell2 = viewController.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))
         XCTAssertEqual(cell2.textLabel?.text, "Song 2")
         XCTAssertEqual(cell2.detailTextLabel?.text, "5:00")
+    }
+    
+    func test_opens_trackURL_when_selecting_song() {
+        configureMocksForSuccessAndLoadView()
+        let tableView = viewController.tableView!
+        viewController.tableView(tableView, didSelectRowAt: IndexPath(item: 0, section: 0))
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.canOpenURL.count, 1)
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.canOpenURL.first,
+                       URL(string: "https://example.com/song_1"))
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.openURL.count, 1)
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.openURL.first?.0,
+                       URL(string: "https://example.com/song_1"))
+    }
+    
+    func test_opens_trackURL_when_selecting_song_2() {
+        configureMocksForSuccessAndLoadView()
+        let tableView = viewController.tableView!
+        viewController.tableView(tableView, didSelectRowAt: IndexPath(item: 1, section: 0))
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.canOpenURL.count, 1)
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.canOpenURL.first,
+                       URL(string: "https://example.com/song_2"))
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.openURL.count, 1)
+        XCTAssertEqual(mockExternalURLService.recordedInvocations.openURL.first?.0,
+                       URL(string: "https://example.com/song_2"))
     }
     
     private func configureMocksForSuccessAndLoadView() {
