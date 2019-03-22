@@ -49,6 +49,7 @@
 		995A55302244205000377512 /* album_details.json in Resources */ = {isa = PBXBuildFile; fileRef = 995A552F2244205000377512 /* album_details.json */; };
 		995A55322244ECB400377512 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55312244ECB300377512 /* AlbumDetailsViewController.swift */; };
 		995A55342244ECD700377512 /* AlbumDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */; };
+		995A55362245092A00377512 /* weezer.png in Resources */ = {isa = PBXBuildFile; fileRef = 995A55352245092A00377512 /* weezer.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		995A552F2244205000377512 /* album_details.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = album_details.json; sourceTree = "<group>"; };
 		995A55312244ECB300377512 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		995A55332244ECD700377512 /* AlbumDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewControllerTests.swift; sourceTree = "<group>"; };
+		995A55352245092A00377512 /* weezer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weezer.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				995A55172243B0A300377512 /* broken_environment.json */,
 				995A54E32242A61600377512 /* search_albums.json */,
 				995A55252243ED9800377512 /* believe.png */,
+				995A55352245092A00377512 /* weezer.png */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				995A55302244205000377512 /* album_details.json in Resources */,
+				995A55362245092A00377512 /* weezer.png in Resources */,
 				995A54E42242A61600377512 /* search_albums.json in Resources */,
 				995A55182243B0A300377512 /* broken_environment.json in Resources */,
 				995A55262243ED9800377512 /* believe.png in Resources */,

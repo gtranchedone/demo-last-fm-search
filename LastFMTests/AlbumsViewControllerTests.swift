@@ -73,10 +73,10 @@ class AlbumsViewControllerTests: XCTestCase {
     }
     
     func test_collection_view_data_source_cells_cachedImage() {
-        let image = UIImage()
+        let image = UIImage(named: "weezer.png", in: .unitTests, compatibleWith: nil)!
         mockImageService.cache(image, for: "https://test.com/cached.png")
         var builder = AlbumSummary.Builder()
-        let album = builder.with(thumbnailURL: URL(string: "https://test.com/cached.png")!).build()
+        let album = builder.with(coverURL: URL(string: "https://test.com/cached.png")).build()
         viewController.albums = [album]
         let indexPath = IndexPath(item: 0, section: 0)
         let collectionView = viewController.collectionView
